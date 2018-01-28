@@ -1,0 +1,64 @@
+<div class="jumbotron jumbotron-org" style="z-index:-2;">
+  <div style='width: 100%; margin-bottom:50px;'>
+  </div>
+
+<div style="width:300px; z-index:100; margin-left:25px; background:white; padding:20px;">
+<%= form_tag search_path, method: "get" do %>
+<div class="form-group">
+   <%= label_tag("Search by Pharmacist's Name") %>
+   <%= text_field_tag(:search, params[:search], class:"form-control") %>
+</div>
+
+<% @countries = CS.countries %>
+<div class="form-group">
+   <%= label_tag("Search by Country") %>
+   <%= select_tag(:country, options_for_select(@countries),include_blank: true, class:"form-control") %>
+</div>
+
+<% @states = CS.states(:my) %>
+<div class="form-group">
+   <%= label_tag("Search by State") %>
+   <%= select_tag(:state, options_for_select(@states),include_blank: true, class:"form-control") %>
+</div>
+
+<div class="form-group">
+ <%= submit_tag("Search", class:"btn btn-lg btn-info form-control")%>
+</div>
+<% end %>
+</div>
+
+</div>
+
+<section class="container">
+  <h2 class="text-center">Search Results</h2>
+  <% if @search.blank? %>
+  <div class="well align-center">
+    <p class=text-center>Sorry, we couldn't find anything based on your search input</p>
+  </div>
+  <% else %>
+  <div class="home-org-box row">
+  <div class="row list-group">
+    <% @search.each do |user| %>
+      <div class="item col-lg-4" >
+        <div class="thumbnail" style="min-height: 400px;">
+          <% if user.avatar? %>
+            <%= image_tag(user.avatar, style:"height:auto; width:100%;") %>
+          <% else %>
+            <%= image_tag("http://placehold.it/770x300&text=no image for profile", style:"height:auto; width:100%;") %>
+          <% end %>
+          <div class="caption">
+            <h2 class="group inner list-group-item-heading text-center" style="color:#9A35B2;"><%= link_to user.name, user_path(user.id) %></h2>
+						<div>
+							<div class="home-event-detail text-center col-lg-8 col-md-8">
+								<p class="group inner list-group-item-text"><%= user.city %> &middot; <%= user.state %> &middot; <%=user.country%></p>
+							</div>
+						</div>
+          </div>
+        </div>
+      </div>
+    </a>
+    <% end %>
+  </div>
+</div>
+<% end %>
+</section>

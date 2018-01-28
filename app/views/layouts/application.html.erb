@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Askpx</title>
-    <%= csrf_meta_tags %>
+<html="en">
+<head>
+  <title>AskPx - Ask a Pharmacist</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tag %>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <%= render partial: "layouts/navbar" %><br>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= yield %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <div class="div-one">
+  <div class="para-one">
+    <h1>Consultation</h1>
+  A place to ask questions to pharmacists.
+  </div>
+  <div class="para-two">
+    <h1>Why use us</h1>
+    It is an alternate platform which is convenient and save up your time of going to pharmacy when you are busy.
+  </div>
+</div>
+
+<div class="pusher"></div>
+<div id="footer">
+  <ul>
+    <li><%= link_to "About Us", about_path %></li>
+    <li><%= link_to "Contact Us", contact_us_path %></li>
+    <li><%= link_to "Medical News", medical_news_path %></li>
+    <li>© AskPx, Inc.</li>
+  </ul>
+</div>
+
+<p><a href="#">Back to top</a></p>
+
+</body>
 </html>

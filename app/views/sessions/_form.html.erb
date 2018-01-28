@@ -1,0 +1,29 @@
+
+<div class="text_field">
+	<%= form.label :name, class:"sign-up-form-label" %>
+	<%= form.text_field :name, class:"form-control" %>
+</div>
+
+<div class="text-field">
+  <%= form.label :email, class:"sign-up-form-label" %>
+  <%= form.text_field :email, type: 'email', class:"form-control" %>
+</div>
+
+<div class="password-field">
+	<%= form.label :password, class:"sign-up-form-label" %>
+	<%= form.password_field :password, class:"form-control" %>
+</div>
+
+<div class="form-group">
+	<p><strong>Sign up as: </strong></p>
+	<%= form.select(:role, ['User', 'Pharmacist'], {}, { class:"form-control", rows:"5", required: true}) %>
+</div>
+
+<br>
+<label class="btn btn-primary" id="image-upload-btn">
+  Upload profile picture
+	<span style="display:none;">
+		<%= form.file_field :avatar %>
+	</span>
+</label>
+<br>

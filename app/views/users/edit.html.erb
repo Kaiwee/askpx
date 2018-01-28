@@ -1,0 +1,88 @@
+<div class="container" style="padding-top:150px;">
+  <div class="row col-lg-4 col-md-4">
+
+<%= form_for @user do |form| %>
+
+<div class="form-group">
+  <%= form.label :name %>
+  <%= form.text_field :name, type: 'name', class:"form-control" %>
+</div>
+
+<div class="form-group">
+	<%= form.label :email %>
+	<%= form.text_field :email, type: 'email', class:"form-control"  %>
+</div>
+
+<div class="form-group">
+  <%= form.label :phone %>
+  <%= form.text_field :phone, type: 'phone', class:"form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label "Introduction" %>
+  <%= form.text_area :intro, type: 'intro', :cols => "50", :rows => "5", class:"form-control" %>
+</div>
+
+<div class="form-group">
+    <h4><%= form.label :country %></h4>
+    <select id="country" name="user[country]" class="form-control form-control-small">
+      <option value="<%= @user.country %>" selected>Select Your Country</option>
+      <% CS.countries.each do |key, value| %>
+        <option value="<%= key %>"><%= value%></option>
+     <% end %>
+    </select>
+    </div>
+
+    <div class="form-group">
+    <h4><%= form.label :state %></h4>
+    <select id="states-of-country" name="user[state]" class="form-control form-control-small">
+      <option id="no-state" value="<%= @user.state %>" selected>Select Your State</option>
+      <% CS.states(:my).each do |key, value| %>
+        <option value="<%= value %>" id="<%= key %>"><%= value %></option>
+      <% end %>
+    </select>
+    </div>
+
+    <div class="form-group">
+      <h4><%= form.label :city %></h4>
+    <select id="cities-of-state" name="user[city]" class="form-control form-control-small" required>
+      <option value="<%= @user.city %>" selected>Select Your City</option>
+    </select>
+    </div>
+
+    <script type="text/javascript">
+
+      $(document).on('change', '#states-of-country', function(e) {
+        var cities_of_state, input_state, state;
+        input_state = $(this);
+        cities_of_state = $('#cities-of-state');
+        state = this.options[e.target.selectedIndex].id;
+        if (state === 'no-state') {
+          return cities_of_state.html('');
+        } else {
+          $.ajax({
+            url: '/cities/' + $(this).children(':selected').attr('id'),
+            success: function(data) {
+              var opt;
+              opt = '<option value="" selected>Select Your City</option>';
+              if (data.length === 0) {
+
+              } else {
+                data.forEach(function(i) {
+                  opt += '<option value="' + i + '">' + i + '</option>';
+                });
+                cities_of_state.html(opt);
+              }
+            }
+          });
+        }
+      });
+    </script>
+
+<%= form.submit "update!", class:"btn btn-primary form-control" %><br>
+<% end %>
+
+<h3><%= link_to "View Profile", user_path %></h3>
+
+  </div>
+</div>

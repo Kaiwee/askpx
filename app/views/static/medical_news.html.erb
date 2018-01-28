@@ -1,0 +1,18 @@
+<h2>Medical News</h2>
+<div class="jumbotron text-center">
+  <% @news.each do |w| %>
+  <div style="border: 1px solid; display: inline-block;">
+    <p><strong>Title:</strong> <%= w['title'] %></p>
+    <p><strong>Description:</strong> <%= w['description'] %>
+    </p>
+    <p>
+      <strong>Url:</strong> <a href=<%= w['url'] %>><%= w['url'] %></a>
+    </p>
+    <p>
+      <strong>Published At:</strong> <%= w['publishedAt'] %>
+    </p>
+  </div>
+  <% end %>
+</div>
+
+<h3>Powered by: <a href="https://newsapi.org">NewsAPI</a></h3>

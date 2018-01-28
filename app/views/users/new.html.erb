@@ -1,0 +1,27 @@
+<h3 id="notice"><%= notice %></h3>
+
+<div class="sign-up-page-container">
+<div id="signup-page" class="sign-up">
+  <h4 class="text-center" id="sign-up-modal">Get Started</h4>
+          <%= form_for User.new, :url => "/log_in" do |form| %>
+            <%= render partial: '/users/form', object: form %>
+            <br>
+              <div class="submit-field">
+                <%= form.submit 'Sign in' %>
+              </div>
+          <% end %>
+        </div>
+        
+          <div style="width: 95%; height: 20px; border-bottom: 1px solid black; text-align: center; margin-top: 6px; position: relative; left: 50%; transform: translateX(-50%);">
+            <span style="font-size: 20px; background-color: white; padding: 0 10px; font-family:'Raleway'; position:relative; top:3px;">
+                or
+            </span>
+          </div>
+          <br>
+
+        <% if !logged_in? %>
+          <div class="container sign-up-page">
+              <h3><%= link_to "Sign in with Facebook", "/auth/facebook" %></h3>
+          </div>
+        <% end %>
+      </div>
