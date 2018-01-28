@@ -66,3 +66,5 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 gem 'city-state'
+
+gem 'rails_12factor', group: :production
