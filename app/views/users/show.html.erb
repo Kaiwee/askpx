@@ -29,7 +29,7 @@
 
 </div>
 
-<% if @user.Admin? %>
+<% if logged_in? and @user.Admin? %>
   <% @users.each do |user|%>
     <div id="users">
       <ul>
