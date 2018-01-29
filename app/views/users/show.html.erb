@@ -23,14 +23,16 @@
         <%= image_tag "http://placehold.it/770x300&text=no images for profile", class:"img-responsive" %>
       <% else %>
 				<%= image_tag(@user.avatar) %><br>
-			<% end %>		
-		<button class="btn btn-default"><%= link_to 'Edit Profile', edit_user_path(@user) %></button> 
+			<% end %>
+    <% if @user == current_user %>  
+		  <button class="btn btn-default"><%= link_to 'Edit Profile', edit_user_path(@user) %></button>
+    <% end %>
 	</div>
 	<div class="col-md-2"></div>
 
 </div>
 
-<% if logged_in? and @user.Admin? %>
+<% if logged_in? and current_user.Admin? %>
   <% @users.each do |user|%>
     <div id="users">
       <ul>
