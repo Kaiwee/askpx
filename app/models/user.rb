@@ -7,8 +7,12 @@ class User < ApplicationRecord
 	enum role: { User: 'User', Pharmacist: 'Pharmacist', Admin: 'admin' }
 
 	validates :email, uniqueness: true
+	validates_presence_of :password, :email
 
 	has_many :authentications, :dependent => :destroy
+
+	has_many :questions
+	has_many :answers
 
 	def self.create_with_auth_and_hash(authentication,auth_hash)
 		user = self.create! do |u|
