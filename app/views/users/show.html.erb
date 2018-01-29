@@ -8,7 +8,7 @@
     <h3><span class="text-primary"><%= @user.role %>&middot;  <%= @user.verification %><br></span></h3>
     <p> Member since: <%= @user.created_at.strftime("%^B %Y") %> </p>
     <p><%= @user.city if @user.city %>  <%= @user.country if @user.country %></p>
-    <p><% @user.intro %></p>
+    <p><%= @user.intro %></p>
     <% if logged_in? and current_user.Admin? %>
       <% if !@user.Verified? %>
         <%= button_to "Verify", verify_user_path(@user.id), method: :post, class:"btn btn-primary"%>
