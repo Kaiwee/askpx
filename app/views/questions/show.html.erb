@@ -9,9 +9,11 @@
 	<%= link_to @question.user.name, user_path(@question.user) %>		
 </h2>
 
-<div class="well">
-	<%= render 'answers/form' %>
-</div>
+<% if logged_in? %>
+	<div class="well">
+		<%= render 'answers/form' %>
+	</div>
+<% end %>
 
 <h2>Users Answers</h2>
 <%  @answers.each do |answer| %>
@@ -19,7 +21,9 @@
   <div class="well">
           <h4><%= link_to answer.user.name, user_path(answer.user) %></h4>
           <p> <%= answer.description %> </p>
-          <p><%= link_to 'Delete answer', answer, method: :delete, data: {confirm: 'Are you sure?' } %></p>
+          <% if logged_in? %>
+          	<p><%= link_to 'Delete answer', answer, method: :delete, data: {confirm: 'Are you sure?' } %></p>
+          <% end %>
   </div>
 </div>  
 <% end %>
