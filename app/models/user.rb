@@ -6,8 +6,7 @@ class User < ApplicationRecord
 	enum verification: { Unverified: 0, Verified: 1 }
 	enum role: { User: 'User', Pharmacist: 'Pharmacist', Admin: 'admin' }
 
-	validates :email, uniqueness: true
-	validates_presence_of :password, :email
+	validates :email, uniqueness: true, presence: true
 
 	has_many :authentications, :dependent => :destroy
 
