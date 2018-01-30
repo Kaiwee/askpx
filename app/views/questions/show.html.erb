@@ -1,13 +1,13 @@
-<h1><strong>Title</strong></h1>
+<h2><strong>Title</strong></h2>
 <h3><%= @question.title %></h3>
 
-<h1><strong>Description</strong></h1>
+<h2><strong>Description</strong></h2>
 <h3><%= @question.description %></h3>		
 
-<h1>
+<h2>
 	<strong>Posted by</strong>
 	<%= link_to @question.user.name, user_path(@question.user) %>		
-</h1>
+</h2>
 
 <div class="well">
 	<%= render 'answers/form' %>
