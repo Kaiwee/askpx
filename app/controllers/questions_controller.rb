@@ -5,6 +5,10 @@ class QuestionsController < ApplicationController
 
 	def show
 		@question = Question.find(params[:id])
+		@answers = @question.answers
+		@answer = Answer.new
+		@username = @question.user.name
+		@user = User.find_by(id: current_user.id)
 	end
 
 	def new

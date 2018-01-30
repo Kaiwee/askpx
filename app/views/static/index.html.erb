@@ -5,3 +5,15 @@
     <div class="main-text">AskPx</div>
     <div class="sub-text">A place to consult pharmacists</div>
   </div>
+
+<h3>Questions Asked by Users</h3>
+
+  <%  @questions.each do |question| %>
+<div class="col-md-3">
+  <div class="well">
+          <p>Title: <br> <%= question.title %> </p>
+          <p>Description: <br> <%= question.description %> </p>
+          <p> <%= link_to 'Show', question_path(question) %> </p>
+  </div>
+</div>  
+<% end %>

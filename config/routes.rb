@@ -24,6 +24,10 @@ Rails.application.routes.draw do
 
   get "/search" => "users#search", as: "search"
 
-  resources :questions
+  resources :questions do
+    resources :answers, only: [:index, :create]
+  end
+
+  resources :answers, only: [:destroy]
 
 end
