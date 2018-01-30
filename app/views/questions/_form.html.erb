@@ -1,0 +1,13 @@
+<%= form_for @question do |f| %>
+<div class="text-field">
+  <%= f.label :title, class:"sign-up-form-label" %>
+  <%= f.text_field :title, type: 'title', class:"form-control" %>
+</div>
+
+<div class="text-field">
+  <%= f.label :description, class:"sign-up-form-label" %>
+  <%= f.text_field :description, type: 'description', class:"form-control" %>
+</div>
+
+  <%= f.submit %>  
+<% end %>

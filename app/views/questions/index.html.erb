@@ -1,0 +1,16 @@
+
+  <%  @questions.each do |question| %>
+  <div class="col-md-3">
+    <div class="well" id="<%= question.id %>">
+      
+      <p> <%= question.title %> </p>     
+      <p> <%= question.description %> </p>
+      <p> <%= link_to 'Show', question_path(question) %> </p>
+      <% if logged_in? and current_user.id == question.user_id %>
+        <p> <%= link_to 'Edit', edit_question_path(question) %> </p>
+        <a href="" class="delete">Delete</a>
+      <% end %>
+
+    </div>
+  </div>
+  <% end %>
