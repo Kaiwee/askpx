@@ -7,8 +7,8 @@
       <p> <%= question.description %> </p>
       <p> <%= link_to 'Show', question_path(question) %> </p>
       <% if logged_in? and current_user.id == question.user_id %>
-        <p> <%= link_to 'Edit', edit_question_path(question) %> </p>
-        <a href="" class="delete">Delete</a>
+        <p><%= link_to 'Edit', edit_question_path(question) %></p>
+        <p><%= link_to 'Delete', question, method: :delete, data: {confirm: 'Are you sure?' } %></p>
       <% end %>
 
     </div>

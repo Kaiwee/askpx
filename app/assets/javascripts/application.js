@@ -16,17 +16,3 @@
 
 //= require jquery
 //= require bootstrap-sprockets
-
-$(document).ready(function(){
-	$('.delete').on('click', function(){
-		if(confirm("Are you sure?")){
-			$.ajax({
-				url: '/questions/' + this.parentElement.id,
-				type: 'DELETE',
-				success: function(r){
-
-				}
-			});
-		}	
-	});
-});
