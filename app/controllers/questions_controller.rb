@@ -1,14 +1,12 @@
 class QuestionsController < ApplicationController
 	def index
-		@questions = current_user.questions.all
+		@questions = current_user.questions.all.order("created_at DESC")
 	end
 
 	def show
 		@question = Question.find(params[:id])
-		@answers = @question.answers
+		@answers = @question.answers.order("created_at DESC")
 		@answer = Answer.new
-		@username = @question.user.name
-		@user = User.find_by(id: current_user.id)
 	end
 
 	def new

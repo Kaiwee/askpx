@@ -11,8 +11,9 @@
   <%  @questions.each do |question| %>
 <div class="col-md-3">
   <div class="well">
-          <p>Title: <br> <%= question.title %> </p>
-          <p>Description: <br> <%= question.description %> </p>
+          <p><strong>Title</strong> <br> <%= question.title %> </p>
+          <p><strong>Description</strong> <br> <%= question.description %> </p>
+          <p><strong>Posted by </strong><%= link_to question.user.name, user_path(question.user) %></p>
           <p> <%= link_to 'Show', question_path(question) %> </p>
   </div>
 </div>  
