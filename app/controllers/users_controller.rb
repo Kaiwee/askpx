@@ -45,10 +45,7 @@ class UsersController < ApplicationController
 	def search
     @search = User.all
     @search = @search.where(["name ilike ?","%#{params[:search]}%"]) if params[:search].present?
-    @search = @search.where("country = ?", params[:country]) if params[:country].present?
     @search = @search.where("state = ?", params[:state]) if params[:state].present?
-    @search = @search.where("city = ?", params[:city]) if params[:city].present?
-
   	end
 
 	private

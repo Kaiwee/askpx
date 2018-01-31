@@ -9,13 +9,7 @@
    <%= text_field_tag(:search, params[:search], class:"form-control") %>
 </div>
 
-<% @countries = CS.countries %>
-<div class="form-group">
-   <%= label_tag("Search by Country") %>
-   <%= select_tag(:country, options_for_select(@countries),include_blank: true, class:"form-control") %>
-</div>
-
-<% @states = CS.states(:my) %>
+<% @states = ["Johor","Kedah","Selangor","Kuala Lumpur","Penang","Perak","Melaka","Negeri Sembilan","Pahang","Perlis","Kelantan","Terengganu","Sabah","Sarawak","Putrajaya","Labuan"] %>
 <div class="form-group">
    <%= label_tag("Search by State") %>
    <%= select_tag(:state, options_for_select(@states),include_blank: true, class:"form-control") %>
