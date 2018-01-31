@@ -18,15 +18,15 @@
 <h2>Users Answers</h2>
 
 <div class="container" id="user_answers">
-<%  @answers.each do |answer| %>
-<div class="col-md-3">
-  <div class="well" id="delete_<%= answer.id %>">
-          <h4><%= link_to answer.user.name, user_path(answer.user) %></h4>
-          <p> <%= answer.description %> </p>
-          <% if logged_in? %>
-          	<p><%= link_to 'Delete answer', answer, method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p>
-          <% end %>
-  </div>
-</div>  
-<% end %>
+  <%  @answers.each do |answer| %>
+    <div class="col-md-3">
+      <div class="well" id="delete_<%= answer.id %>">
+        <h4><%= link_to answer.user.name, user_path(answer.user) %></h4>
+        <p> <%= answer.description %> </p>
+        <% if logged_in? %>
+        <p><%= link_to 'Delete answer', answer, method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p>
+        <% end %>
+      </div>
+    </div>  
+  <% end %>
 </div>
