@@ -1,0 +1,11 @@
+$('#user_answers').prepend('\
+	<div class="col-md-3">\
+		<div class="well">\
+			<h4><%= j link_to @answer.user.name, user_path(@answer.user) %></h4>\
+			<p> <%= j @answer.description %> </p>\
+			<% if logged_in? %>\
+				<p><%= j link_to 'Delete answer', @answer, method: :delete, data: {confirm: 'Are you sure?' } %></p>\
+			<% end %>\
+		</div>\
+	</div>\
+');
