@@ -1,14 +1,14 @@
 
   <%  @questions.each do |question| %>
   <div class="col-md-3">
-    <div class="well" id="<%= question.id %>">
+    <div class="well" id="delete_<%= question.id %>">
       
       <p><strong>Title</strong> <br> <%= question.title %> </p>
       <p><strong>Description</strong> <br> <%= question.description %> </p>
       <p> <%= link_to 'Show', question_path(question) %> </p>
       <% if logged_in? and current_user.id == question.user_id %>
         <p><%= link_to 'Edit', edit_question_path(question) %></p>
-        <p><%= link_to 'Delete', question, method: :delete, data: {confirm: 'Are you sure?' } %></p>
+        <p><%= link_to 'Delete', question, method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p>
       <% end %>
 
     </div>

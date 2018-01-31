@@ -35,7 +35,10 @@ class QuestionsController < ApplicationController
 	def destroy
 		@question = Question.find(params[:id])
 		@question.destroy
-		redirect_to questions_path
+		respond_to do |format|
+			format.html { redirect_to questions_path }
+			format.js
+		end
 	end
 
 	private
