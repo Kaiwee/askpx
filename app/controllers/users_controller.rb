@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :verify, :unverify]
+	before_action :check_current_user, only: [:edit, :update]
 
 	def create
 		user = User.find_by_email(params[:user][:email])
@@ -51,7 +52,19 @@ class UsersController < ApplicationController
 	private
 
 	def set_user
-		@user = User.find(params[:id])
+		if @user = User.find_by(id: params[:id])
+			return @user
+		else
+			redirect_to '/', notice: "User does not exists"
+		end	
+	end
+
+	def check_current_user
+		if logged_in? and current_user.id != @user.id
+			redirect_to "/", notice: "Error"
+		elsif !logged_in?
+			redirect_to "/", notice: "Error"
+		end	
 	end
 
 	def user_params

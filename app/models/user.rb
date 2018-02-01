@@ -17,6 +17,7 @@ class User < ApplicationRecord
 		user = self.create! do |u|
 			u.password = SecureRandom.hex(10)
 			u.email = auth_hash["extra"]["raw_info"]["email"]
+			u.name = auth_hash["extra"]["raw_info"]["name"]
 		end
 		user.authentications << authentication
 		return user
