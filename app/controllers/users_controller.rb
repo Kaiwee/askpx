@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update, :verify, :unverify]
+	before_action :find_user, only: [:show, :edit, :update, :verify, :unverify]
 	before_action :check_current_user, only: [:edit, :update]
 
 	def create
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
 	private
 
-	def set_user
+	def find_user
 		if @user = User.find_by(id: params[:id])
 			return @user
 		else
@@ -61,9 +61,9 @@ class UsersController < ApplicationController
 
 	def check_current_user
 		if logged_in? and current_user.id != @user.id
-			redirect_to "/", notice: "Error"
+			redirect_to "/", notice: "This is not your profile"
 		elsif !logged_in?
-			redirect_to "/", notice: "Error"
+			redirect_to "/", notice: "You need to log in first"
 		end	
 	end
 
