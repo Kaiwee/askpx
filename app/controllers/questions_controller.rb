@@ -49,7 +49,7 @@ class QuestionsController < ApplicationController
 		if @question = Question.find_by(id: params[:id])
 			return @question
 		else
-			redirect_to '/', notice: "Question does not exists"
+			redirect_to '/', notice: "Question does not exist"
 		end	
 	end
 
