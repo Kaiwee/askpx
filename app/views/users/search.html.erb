@@ -30,7 +30,7 @@
     <p class=text-center>Sorry, we couldn't find anything based on your search input</p>
   </div>
   <% else %>
-  <div class="home-org-box row">
+  <div class="home-user-box row">
   <div class="row list-group">
     <% @search.each do |user| %>
       <div class="item col-lg-4" >
@@ -43,7 +43,7 @@
           <div class="caption">
             <h2 class="group inner list-group-item-heading text-center" style="color:#9A35B2;"><%= link_to user.name, user_path(user.id) %></h2>
 						<div>
-							<div class="home-event-detail text-center col-lg-8 col-md-8">
+							<div class="text-center col-lg-8 col-md-8">
 								<p class="group inner list-group-item-text"><%= user.city %> &middot; <%= user.state %> &middot; <%=user.country%></p>
 							</div>
 						</div>
