@@ -9,6 +9,11 @@
     <p> Member since: <%= @user.created_at.strftime("%^B %Y") %> </p>
     <p><%= @user.city if @user.city %>  <%= @user.country if @user.country %></p>
     <p><%= @user.intro %></p>
+    <% if @user.id != current_user.id %>
+      <div class="item btn btn-default">
+        <%= link_to 'Send Message', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%>
+      </div>
+    <% end %>
     <% if logged_in? and current_user.Admin? %>
       <% if !@user.Verified? %>
         <%= button_to "Verify", verify_user_path(@user.id), method: :post, class:"btn btn-primary"%>

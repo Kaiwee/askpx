@@ -30,4 +30,8 @@ Rails.application.routes.draw do
 
   resources :answers, only: [:destroy]
 
+  resources :conversations do
+    resources :messages
+  end
+
 end

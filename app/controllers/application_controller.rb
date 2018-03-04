@@ -21,4 +21,11 @@ class ApplicationController < ActionController::Base
   	render json: CS.cities(params[:state], :my).to_json
   end
 
+  def authenticate_user
+    if !current_user
+      redirect_to signin_path, notice: "You must be signed in to do that!"
+    end
+  end
+  helper_method :authenticate_user
+
 end
