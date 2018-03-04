@@ -7,7 +7,7 @@
 		<% end %>
 
 		<% if logged_in? %>
-			<li><%= link_to "Ask a question", new_question_path, id: "new_link", remote: true %></li>
+			<li><%= link_to "Ask a question", new_question_path %></li>
 			<li><%= link_to "My Questions", questions_path %></li>		
 			<li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
 			<li><%= link_to "Chatbox", conversations_path, class: "item" %></li>
