@@ -3,6 +3,8 @@ class Message < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :body, :conversation_id, :user_id
 
+  enum read: { Unseen: false, Seen: true }
+
   def message_time
     created_at.in_time_zone('Kuala Lumpur').strftime("%d/%m/%y at %l:%M %p")
   end
