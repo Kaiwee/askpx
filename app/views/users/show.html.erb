@@ -9,9 +9,9 @@
     <p> Member since: <%= @user.created_at.strftime("%^B %Y") %> </p>
     <p><%= @user.city if @user.city %>  <%= @user.country if @user.country %></p>
     <p><%= @user.intro %></p>
-    <% if @user.id != current_user.id %>
+    <% if @user != current_user %>
       <div class="item btn btn-default">
-        <%= link_to 'Send Message', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%>
+        <%= link_to 'Send Message', conversations_path(sender_id: current_user, recipient_id: @user), method: 'post'%>
       </div>
     <% end %>
     <% if logged_in? and current_user.Admin? %>
