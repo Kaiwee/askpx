@@ -51,11 +51,6 @@ background:
   width: 50%;
   float: left;
 }
-
-.para-two {
-  width: 50%;
-  float: left;
-}
  
 /*----- Menu -----*/
   .menu {
@@ -112,14 +107,14 @@ background:
 }
  
 .menu a {
-  color:#fff;
+  color:black;
   transition:color linear 0.15s;
   text-decoration: none;
 }
  
 .menu a:hover, .menu .current-item a {
   text-decoration:none;
-  color:#303030;
+  color:blue;
 }
 
 #footer {
