@@ -79,6 +79,11 @@
       });
     </script>
 
+<div class="form-group">
+  <%= form.label :role %>
+    <%= form.select(:role, ['User', 'Pharmacist'], {}, { class:"form-control", rows:"5", required: true}) %>
+</div>
+
 <%= form.submit "update!", class:"btn btn-primary form-control" %><br>
 <% end %>
 
