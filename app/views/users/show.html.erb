@@ -23,12 +23,6 @@
     <% end %>
 		<hr>
 
-		<h3>Profile Picture:</h3>
-			<% if !@user.avatar.present? %>
-        <%= image_tag "http://placehold.it/770x300&text=no images for profile", class:"img-responsive" %>
-      <% else %>
-				<%= image_tag(@user.avatar) %><br>
-			<% end %>
     <% if @user == current_user %>  
 		  <button class="btn btn-default"><%= link_to 'Edit Profile', edit_user_path(@user) %></button>
     <% end %>

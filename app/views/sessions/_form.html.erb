@@ -18,12 +18,3 @@
 	<p><strong>Sign up as: </strong></p>
 	<%= form.select(:role, ['User', 'Pharmacist'], {}, { class:"form-control", rows:"5", required: true}) %>
 </div>
-
-<br>
-<label class="btn btn-primary" id="image-upload-btn">
-  Upload profile picture
-	<span style="display:none;">
-		<%= form.file_field :avatar %>
-	</span>
-</label>
-<br>

@@ -4,6 +4,7 @@
 
 		<% if !logged_in? %>
 		<li><%= link_to "Ask a question", sign_in_path %></li>
+		<li><%= link_to "Inbox", sign_in_path %></li>
 		<% end %>
 
 		<% if logged_in? %>
