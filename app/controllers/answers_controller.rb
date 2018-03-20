@@ -9,10 +9,9 @@ class AnswersController < ApplicationController
 		@answer.question = @question # not understand(to insert question_id to database,but how?)
 		@answers = @question.answers.order("created_at DESC")
 		if @answer.save
-			respond_to do |format|
-				format.html { redirect_to @question }
-				format.js
-			end	
+			redirect_to @question
+		else
+			redirect_to @question
 		end
 	end
 
