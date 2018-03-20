@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 	end
 
 	def search
-    @search = User.all
+    @search = User.all.order("created_at DESC")
     @search = @search.where(["name ilike ?","%#{params[:search]}%"]) if params[:search].present?
     @search = @search.where("state = ?", params[:state]) if params[:state].present?
   	end
